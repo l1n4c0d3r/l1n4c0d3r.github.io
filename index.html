@@ -52,7 +52,7 @@
   <h2> Viel Spaß beim Lernen</h2>
   <h4> Good luck!</h4>
   <h5> Vokabeln ab Seite 200
-  <table>
+  <table id="vokabelTabelle1">
     <tr onclick="zeigeVokabel(this)"> <!--table row = Tabellenzeile-->
       <td> <!-- table data = Tabellenspalte-->
           Wissenschaft
@@ -289,22 +289,54 @@
   
   <script>
     var d = document;
-	var table = d.getElementById();
+	var table = d.getElementById('vokabelTabelle1');
 	
 	
 	function zeigeVokabel(zeile) {
 	  var sichtbarkeit = zeile.children[1].style.display;
 	  
-	  if(sichtbarkeit === 'none') {
+	  if(sichtbarkeit === 'none' || sichtbarkeit === '') {
 	    zeile.children[1].style.display = 'block';	  
 	  } else {
 	    zeile.children[1].style.display = 'none';
 	  }
 	}
 	
+	
+	/*
+	  Tabellen füllen
+	*/
+	
+	var vokabeln = [
+	  ['deutsch', 'englisch'],
+	  
+	];
+	
+	
 	function fuegeVokabelnEin() {
+	  var anzahlVokabeln = vokabeln.length;
+	  var tr, tdDeutsch, tdEnglisch;
+	  
+	  for(var i = 0; i < anzahlVokabeln; i++) {
+	    fuegeZeileEin();
+		
+	  }
+	
+	}
+	
+	function fuegeZeileEin() {
+	  var tr = d.createElement('TR');
+	  
+	  return tr;
+	}
 	
 	
+	function fuegeDatenZelleEin(wort) {
+	  var td = d.createElement('TD');
+	  td.innerHTML = wort;
+	  
+	  
+	  return td;
 	}
   
   </script>
